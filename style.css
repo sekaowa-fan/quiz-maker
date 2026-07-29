@@ -1,0 +1,80 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#08111E;
+
+    color:white;
+
+    font-family:"Noto Sans JP",sans-serif;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.container{
+
+    width:90%;
+    max-width:500px;
+
+    text-align:center;
+
+}
+
+h1{
+
+    font-size:42px;
+
+    margin-bottom:50px;
+
+    letter-spacing:4px;
+
+}
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+button{
+
+    background:transparent;
+
+    border:2px solid white;
+
+    color:white;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    background:white;
+
+    color:#08111E;
+
+}
