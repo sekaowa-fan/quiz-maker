@@ -1,40 +1,207 @@
+/* ===========================
+   Quiz Maker - 共通スタイル
+=========================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+:root{
+    --bg:#08111E;
+    --card:#121D2E;
+    --border:rgba(255,255,255,.18);
+    --white:#ffffff;
+    --hover:#1b2b45;
+    --radius:18px;
+}
+
 body{
 
-    background:#08111E;
+    background:var(--bg);
 
-    color:white;
+    color:var(--white);
 
-    font-family:"Noto Sans JP",sans-serif;
+    font-family:
+    "Noto Sans JP",
+    sans-serif;
 
-    height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+    min-height:100vh;
 
 }
 
 .container{
 
-    width:90%;
-    max-width:500px;
+    width:min(92%,700px);
 
-    text-align:center;
+    margin:auto;
+
+    padding:40px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
 
 }
 
 h1{
 
-    font-size:42px;
+    font-size:48px;
 
+    letter-spacing:4px;
+
+    margin-bottom:12px;
+
+    text-align:center;
+
+}
+
+.subtitle{
+
+    opacity:.7;
+
+    margin-bottom:50px;
+
+    text-align:center;
+
+}
+
+.menu{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+button{
+
+    width:100%;
+
+    background:transparent;
+
+    color:white;
+
+    border:2px solid white;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    background:white;
+
+    color:#08111E;
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+.card{
+
+    background:var(--card);
+
+    border:2px solid var(--border);
+
+    border-radius:22px;
+
+    padding:22px;
+
+}
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    margin-top:8px;
+
+    margin-bottom:18px;
+
+    padding:14px;
+
+    background:#09111d;
+
+    color:white;
+
+    border:2px solid var(--border);
+
+    border-radius:14px;
+
+    font-size:16px;
+
+}
+
+textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+label{
+
+    display:block;
+
+    margin-top:18px;
+
+    font-weight:bold;
+
+}
+
+hr{
+
+    border:none;
+
+    border-top:1px solid rgba(255,255,255,.12);
+
+    margin:30px 0;
+
+}
+
+@media(max-width:600px){
+
+    h1{
+
+        font-size:36px;
+
+    }
+
+    button{
+
+        font-size:18px;
+
+        padding:16px;
+
+    }
+
+}
     margin-bottom:50px;
 
     letter-spacing:4px;
