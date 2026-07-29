@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Maker - 作成モード</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="creator.css">
+</head>
+<body>
+
+<header class="topbar">
+    <button class="backBtn" onclick="location.href='index.html'">
+        ← ホーム
+    </button>
+
+    <h1>クイズ作成</h1>
+
+    <button id="saveQuiz">
+        💾 保存
+    </button>
+</header>
+
+<main>
+
+<section class="quizInfo">
+
+<h2>クイズ情報</h2>
+
+<label>
+
+クイズ名
+
+<input
+type="text"
+id="quizTitle"
+placeholder="クイズ名を入力">
+
+</label>
+
+<div class="modeBox">
+
+<h3>ゲーム設定</h3>
+
+<label>
+
+<input
+type="radio"
+name="mode"
+value="continue"
+checked>
+
+最後まで続ける
+
+</label>
+
+<label>
+
+<input
+type="radio"
+name="mode"
+value="sudden">
+
+一問でも間違えたら終了
+
+</label>
+
+</div>
+
+</section>
+
+<hr>
+
+<section id="questionArea">
+
+</section>
+
+<div class="addArea">
+
+<button id="addQuestion">
+
+＋ 問題を追加
+
+</button>
+
+</div>
+
+</main>
+
+<template id="questionTemplate">
+
+<div class="questionCard">
+
+<h2 class="questionNumber">
+
+問題
+
+</h2>
+
+<label>
+
+問題形式
+
+<select class="questionType">
+
+<option value="2">2択</option>
+
+<option value="3">3択</option>
+
+<option value="4" selected>4択</option>
+
+<option value="5">5択</option>
+
+<option value="6">6択</option>
+
+<option value="text">記述式</option>
+
+<option value="sort">並べ替え</option>
+
+<option value="match">線で結ぶ</option>
+
+</select>
+
+</label>
+
+<label>
+
+問題文
+
+<textarea
+class="questionText"
+placeholder="問題文を入力"></textarea>
+
+</label>
+
+<label>
+
+問題画像
+
+<input
+type="file"
+class="questionImage"
+accept="image/*">
+
+</label>
+
+<div class="choices">
+
+</div>
+
+<label>
+
+正解表示まで
+
+<select class="delay">
+
+<option value="0">0秒</option>
+<option value="1">1秒</option>
+<option value="2">2秒</option>
+<option value="3" selected>3秒</option>
+<option value="4">4秒</option>
+<option value="5">5秒</option>
+
+</select>
+
+</label>
+
+<button class="deleteQuestion">
+
+この問題を削除
+
+</button>
+
+</div>
+
+</template>
+
+<script src="storage.js"></script>
+<script src="creator.js"></script>
+
+</body>
+</html>
