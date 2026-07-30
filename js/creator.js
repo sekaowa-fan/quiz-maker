@@ -152,3 +152,111 @@ addButton.addEventListener("click", () => {
 
 
 });
+// ==========================
+// 保存ボタン
+// ==========================
+
+
+const saveButton = document.getElementById("saveQuiz");
+
+
+saveButton.addEventListener("click", ()=>{
+
+
+    const name =
+    document.getElementById("quizName").value.trim();
+
+
+
+    if(name === ""){
+
+        alert("クイズ名を入力してください");
+
+        return;
+
+    }
+
+
+
+    const cards =
+    document.querySelectorAll(".question");
+
+
+
+    if(cards.length === 0){
+
+        alert("問題を追加してください");
+
+        return;
+
+    }
+
+
+
+
+    const quiz = {
+
+        title:name,
+
+        questions:[]
+
+
+    };
+
+
+
+
+    cards.forEach(card=>{
+
+
+        const type =
+        card.querySelector(".type").value;
+
+
+
+        const text =
+        card.querySelector(".questionText").value;
+
+
+
+        const choices =
+        [...card.querySelectorAll(".choice")]
+        .map(input=>input.value);
+
+
+
+        const answer =
+        Number(
+            card.querySelector(".answer").value
+        );
+
+
+
+        quiz.questions.push({
+
+            type:type,
+
+            text:text,
+
+            choices:choices,
+
+            answer:answer
+
+        });
+
+
+
+    });
+
+
+
+
+    saveQuizData(quiz);
+
+
+
+    alert("保存しました！");
+
+
+
+});
