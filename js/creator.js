@@ -146,15 +146,23 @@ placeholder="記述問題の答え">
     type.addEventListener("change",()=>{
 
 
-        if(type.value==="text"){
+        const textArea =
+question.querySelector(".textAnswerArea");
 
-            choiceArea.style.display="none";
 
-        }else{
+if(type.value==="text"){
 
-            choiceArea.style.display="block";
+    choiceArea.style.display="none";
 
-        }
+    textArea.style.display="block";
+
+}else{
+
+    choiceArea.style.display="block";
+
+    textArea.style.display="none";
+
+}
 
 
     });
