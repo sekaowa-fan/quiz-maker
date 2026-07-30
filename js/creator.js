@@ -234,15 +234,18 @@ saveButton.addEventListener("click", ()=>{
 
         quiz.questions.push({
 
-            type:type,
+    type:type,
 
-            text:text,
+    text:text,
 
-            choices:choices,
+    choices:choices,
 
-            answer:answer
+    answer:
+    type==="choice"
+    ? answer
+    : card.querySelector(".questionText").dataset.answer || ""
 
-        });
+});
 
 
 
