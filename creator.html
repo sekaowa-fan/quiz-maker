@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>クイズ作成</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/creator.css">
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <button class="back" onclick="location.href='index.html'">
+        ← 戻る
+    </button>
+
+    <h1>クイズ作成</h1>
+
+</header>
+
+
+
+<main class="creator">
+
+
+<section class="box">
+
+
+<h2>クイズ情報</h2>
+
+
+<label>
+クイズ名
+</label>
+
+<input 
+id="quizName"
+type="text"
+placeholder="例：日本の歴史クイズ">
+
+
+
+</section>
+
+
+
+
+<section class="box">
+
+
+<h2>問題</h2>
+
+
+<div id="questions">
+
+
+<!-- 問題がここに追加される -->
+
+
+</div>
+
+
+
+<button id="addQuestion">
+＋ 問題を追加
+</button>
+
+
+
+</section>
+
+
+
+
+<button id="saveQuiz" class="save">
+
+💾 保存
+
+</button>
+
+
+</main>
+
+
+
+<script src="js/creator.js"></script>
+
+
+</body>
+
+</html>
