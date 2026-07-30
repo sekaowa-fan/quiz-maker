@@ -53,7 +53,17 @@ addButton.addEventListener("click", () => {
         placeholder="問題文を入力">
         </textarea>
 
+<div class="textAnswerArea">
 
+<label>
+正解
+</label>
+
+<input
+class="textAnswer"
+placeholder="記述問題の答え">
+
+</div>
 
         <div class="choiceArea">
 
