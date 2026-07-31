@@ -23,8 +23,17 @@ addButton.addEventListener("click", () => {
 
     question.innerHTML = `
 
-        <h3>問題 ${questionCount}</h3>
+        <div class="questionHeader">
 
+<h3>問題 ${questionCount}</h3>
+
+<button class="deleteQuestion">
+
+🗑 削除
+
+</button>
+
+</div>
 
         <label>
             問題形式
