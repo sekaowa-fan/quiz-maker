@@ -25,13 +25,25 @@ addButton.addEventListener("click", () => {
 
         <div class="questionHeader">
 
+<div class="questionHeader">
+
 <h3>問題 ${questionCount}</h3>
+
+<div class="questionButtons">
+
+<button class="copyQuestion">
+
+📄 コピー
+
+</button>
 
 <button class="deleteQuestion">
 
 🗑 削除
 
 </button>
+
+</div>
 
 </div>
 
@@ -154,6 +166,14 @@ deleteButton.addEventListener("click",()=>{
         question.remove();
 
     }
+
+});
+
+    copyButton.addEventListener("click",()=>{
+
+    const clone = question.cloneNode(true);
+
+    questionsArea.appendChild(clone);
 
 });
 
