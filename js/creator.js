@@ -147,6 +147,8 @@ function createQuestion(data = null) {
 
     }
 
+    refreshType();
+
     imageInput.addEventListener("change",(e)=>{
 
     const file = e.target.files[0];
@@ -199,6 +201,8 @@ function createQuestion(data = null) {
         updateNumbers();
 
     });
+
+if (data) {
 
     if (data.type === "sort") {
 
@@ -265,13 +269,48 @@ function getQuestionData(question) {
 
     if (type === "choice") {
 
-        return {
+    return {
 
-            type,
+        type,
 
-            text,
+        text,
+
+        choices: [...question.querySelectorAll(".choice")]
+            .map(input => input.value),
+
+        answer:Number(
+            question.querySelector(".answer").value
+        )
+
+    };
+
+}
 
 if (type === "sort") {
+
+    return {
+
+        type,
+
+        text,
+
+        items:[...question.querySelectorAll(".sortItem")]
+            .map(input=>input.value)
+
+    };
+
+}
+
+return {
+
+    type,
+
+    text,
+
+    answer:
+        question.querySelector(".textAnswer").value
+
+};
 
     return {
 
