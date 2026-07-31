@@ -274,29 +274,15 @@ saveButton.addEventListener("click", () => {
 
     });
 
-    let quizzes = [];
-
-    try {
-
-        quizzes =
-            JSON.parse(
-                localStorage.getItem("quizzes")
-            ) || [];
-
-    } catch {
-
-        quizzes = [];
-
-    }
-
-    quizzes.push(quiz);
-
-    localStorage.setItem(
-        "quizzes",
-        JSON.stringify(quizzes)
-    );
+    saveQuizData(quiz);
 
     alert("保存しました！");
+
+    quizNameInput.value = "";
+
+questionsArea.innerHTML = "";
+
+createQuestion();
 
 });
 
