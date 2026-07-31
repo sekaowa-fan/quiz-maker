@@ -57,6 +57,15 @@ function createQuestion(data = null) {
             class="questionText"
             placeholder="問題文を入力"></textarea>
 
+    　　 <label>問題画像</label>
+
+<input
+    type="file"
+    class="questionImageInput"
+    accept="image/*">
+
+<div class="questionImagePreview"></div>
+
         <div class="choiceArea">
 
             <label>選択肢1</label>
