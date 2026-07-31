@@ -1,326 +1,305 @@
-// ==========================
-// クイズ作成モード
-// ==========================
-
+// ======================================
+// creator.js Part1
+// クイズメーカー 作成画面
+// ======================================
 
 const questionsArea = document.getElementById("questions");
 const addButton = document.getElementById("addQuestion");
+const saveButton = document.getElementById("saveQuiz");
+const quizNameInput = document.getElementById("quizName");
 
-let questionCount = 0;
+let questions = [];
 
+function updateNumbers() {
+    document.querySelectorAll(".question").forEach((card, index) => {
+        card.querySelector(".questionTitle").textContent =
+            `問題 ${index + 1}`;
+    });
+}
 
-// 問題追加
-
-addButton.addEventListener("click", () => {
-
-    questionCount++;
-
+function createQuestion(data = null) {
 
     const question = document.createElement("div");
-
     question.className = "question";
 
-
     question.innerHTML = `
-
         <div class="questionHeader">
 
-<div class="questionHeader">
+            <h3 class="questionTitle"></h3>
 
-<h3>問題 ${questionCount}</h3>
+            <div class="questionButtons">
 
-<div class="questionButtons">
+                <button type="button" class="copyQuestion">
+                    📄 コピー
+                </button>
 
-<button class="copyQuestion">
+                <button type="button" class="deleteQuestion">
+                    🗑 削除
+                </button>
 
-📄 コピー
-
-</button>
-
-<button class="deleteQuestion">
-
-🗑 削除
-
-</button>
-
-</div>
-
-</div>
-
-        <label>
-            問題形式
-        </label>
-
-        <select class="type">
-
-            <option value="choice">
-                選択問題
-            </option>
-
-            <option value="text">
-                記述問題
-            </option>
-
-        </select>
-
-
-
-        <label>
-            問題文
-        </label>
-
-        <textarea
-        class="questionText"
-        placeholder="問題文を入力">
-        </textarea>
-
-<div class="textAnswerArea">
-
-<label>
-正解
-</label>
-
-<input
-class="textAnswer"
-placeholder="記述問題の答え">
-
-</div>
-
-        <div class="choiceArea">
-
-            <label>
-                選択肢
-            </label>
-
-
-            <input 
-            class="choice"
-            placeholder="選択肢1">
-
-
-            <input 
-            class="choice"
-            placeholder="選択肢2">
-
-
-            <input 
-            class="choice"
-            placeholder="選択肢3">
-
-
-            <input 
-            class="choice"
-            placeholder="選択肢4">
-
-
-
-            <label>
-                正解番号
-            </label>
-
-
-            <select class="answer">
-
-
-                <option value="0">
-                    選択肢1
-                </option>
-
-
-                <option value="1">
-                    選択肢2
-                </option>
-
-
-                <option value="2">
-                    選択肢3
-                </option>
-
-
-                <option value="3">
-                    選択肢4
-                </option>
-
-
-            </select>
-
+            </div>
 
         </div>
 
+        <label>問題形式</label>
 
+        <select class="type">
+
+            <option value="choice">選択問題</option>
+
+            <option value="text">記述問題</option>
+
+        </select>
+
+        <label>問題文</label>
+
+        <textarea
+            class="questionText"
+            placeholder="問題文を入力"></textarea>
+
+        <div class="choiceArea">
+
+            <label>選択肢1</label>
+            <input class="choice">
+
+            <label>選択肢2</label>
+            <input class="choice">
+
+            <label>選択肢3</label>
+            <input class="choice">
+
+            <label>選択肢4</label>
+            <input class="choice">
+
+            <label>正解</label>
+
+            <select class="answer">
+                <option value="0">選択肢1</option>
+                <option value="1">選択肢2</option>
+                <option value="2">選択肢3</option>
+                <option value="3">選択肢4</option>
+            </select>
+
+        </div>
+
+        <div class="textAnswerArea">
+
+            <label>記述問題の答え</label>
+
+            <input class="textAnswer">
+
+        </div>
     `;
-
 
     questionsArea.appendChild(question);
 
-    const copyButton =
-question.querySelector(".copyQuestion");
+    const title = question.querySelector(".questionTitle");
+    const type = question.querySelector(".type");
+    const choiceArea = question.querySelector(".choiceArea");
+    const textAnswerArea =
+        question.querySelector(".textAnswerArea");
 
-　　const deleteButton =
-question.querySelector(".deleteQuestion");
+    function refreshType() {
 
-deleteButton.addEventListener("click",()=>{
+        if (type.value === "choice") {
 
-    if(confirm("この問題を削除しますか？")){
+            choiceArea.style.display = "block";
+            textAnswerArea.style.display = "none";
+
+        } else {
+
+            choiceArea.style.display = "none";
+            textAnswerArea.style.display = "block";
+
+        }
+
+    }
+
+    refreshType();
+
+    type.addEventListener("change", refreshType);
+
+    const deleteButton =
+        question.querySelector(".deleteQuestion");
+
+    deleteButton.addEventListener("click", () => {
+
+        if (!confirm("この問題を削除しますか？")) return;
 
         question.remove();
 
+        updateNumbers();
+
+    });
+
+    const copyButton =
+        question.querySelector(".copyQuestion");
+
+    copyButton.addEventListener("click", () => {
+
+        const copyData = getQuestionData(question);
+
+        createQuestion(copyData);
+
+        updateNumbers();
+
+    });
+
+    if (data) {
+
+        type.value = data.type;
+
+        refreshType();
+
+        question.querySelector(".questionText").value =
+            data.text;
+
+        if (data.type === "choice") {
+
+            const inputs =
+                question.querySelectorAll(".choice");
+
+            data.choices.forEach((choice, index) => {
+
+                if (inputs[index]) {
+
+                    inputs[index].value = choice;
+
+                }
+
+            });
+
+            question.querySelector(".answer").value =
+                data.answer;
+
+        } else {
+
+            question.querySelector(".textAnswer").value =
+                data.answer;
+
+        }
+
     }
 
-});
-
-    copyButton.addEventListener("click",()=>{
-
-    const clone = question.cloneNode(true);
-
-    questionsArea.appendChild(clone);
-
-});
-
-    const type =
-    question.querySelector(".type");
-
-
-    const choiceArea =
-    question.querySelector(".choiceArea");
-
-
-
-    type.addEventListener("change",()=>{
-
-
-        const textArea =
-question.querySelector(".textAnswerArea");
-
-
-if(type.value==="text"){
-
-    choiceArea.style.display="none";
-
-    textArea.style.display="block";
-
-}else{
-
-    choiceArea.style.display="block";
-
-    textArea.style.display="none";
+    updateNumbers();
 
 }
 
+function getQuestionData(question) {
 
-    });
+    const type =
+        question.querySelector(".type").value;
 
+    const text =
+        question.querySelector(".questionText").value;
 
+    if (type === "choice") {
 
-});
-// ==========================
-// 保存ボタン
-// ==========================
+        return {
 
+            type,
 
-const saveButton = document.getElementById("saveQuiz");
+            text,
 
+            choices: [...question.querySelectorAll(".choice")]
+                .map(input => input.value),
 
-saveButton.addEventListener("click", ()=>{
+            answer:
+                Number(
+                    question.querySelector(".answer").value
+                )
 
-
-    const name =
-    document.getElementById("quizName").value.trim();
-
-
-
-    if(name === ""){
-
-        alert("クイズ名を入力してください");
-
-        return;
+        };
 
     }
 
+    return {
 
+        type,
 
-    const cards =
-    document.querySelectorAll(".question");
+        text,
 
-
-
-    if(cards.length === 0){
-
-        alert("問題を追加してください");
-
-        return;
-
-    }
-
-
-
-
-    const quiz = {
-
-        title:name,
-
-        questions:[]
-
+        answer:
+            question.querySelector(".textAnswer").value
 
     };
 
+}
 
+// ======================================
+// creator.js Part3
+// 問題追加・保存
+// ======================================
 
+addButton.addEventListener("click", () => {
 
-    cards.forEach(card=>{
-
-
-        const type =
-        card.querySelector(".type").value;
-
-
-
-        const text =
-        card.querySelector(".questionText").value;
-
-
-
-        const choices =
-        [...card.querySelectorAll(".choice")]
-        .map(input=>input.value);
-
-
-
-        const answer =
-        Number(
-            card.querySelector(".answer").value
-        );
-
-
-
-        quiz.questions.push({
-
-    type:type,
-
-    text:text,
-
-    choices:choices,
-
-    answer:
-    type==="choice"
-    ? answer
-    : card.querySelector(".questionText").dataset.answer || ""
+    createQuestion();
 
 });
 
+saveButton.addEventListener("click", () => {
 
+    const title = quizNameInput.value.trim();
+
+    if (title === "") {
+
+        alert("クイズ名を入力してください。");
+        return;
+
+    }
+
+    const questionCards =
+        document.querySelectorAll(".question");
+
+    if (questionCards.length === 0) {
+
+        alert("問題を1問以上追加してください。");
+        return;
+
+    }
+
+    const quiz = {
+
+        title,
+
+        questions: []
+
+    };
+
+    questionCards.forEach(card => {
+
+        quiz.questions.push(
+            getQuestionData(card)
+        );
 
     });
 
+    let quizzes = [];
 
+    try {
 
+        quizzes =
+            JSON.parse(
+                localStorage.getItem("quizzes")
+            ) || [];
 
-    saveQuizData(quiz);
+    } catch {
 
+        quizzes = [];
 
+    }
+
+    quizzes.push(quiz);
+
+    localStorage.setItem(
+        "quizzes",
+        JSON.stringify(quizzes)
+    );
 
     alert("保存しました！");
 
-
-
 });
+
+
+// 最初の1問を作成
+createQuestion();
