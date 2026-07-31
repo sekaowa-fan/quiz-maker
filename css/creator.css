@@ -221,3 +221,37 @@ textarea{
     display:none;
 
 }
+
+.questionHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.deleteQuestion{
+
+    width:auto;
+
+    padding:8px 14px;
+
+    font-size:15px;
+
+    color:#ff6b6b;
+
+    border:1px solid #ff6b6b;
+
+}
+
+.deleteQuestion:hover{
+
+    background:#ff6b6b;
+
+    color:white;
+
+}
