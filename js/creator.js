@@ -171,8 +171,36 @@ function createQuestion(data = null) {
 
 });
 
-    refreshType();
+    function refreshType(){
 
+    const choiceArea =
+        question.querySelector(".choiceArea");
+
+    const textArea =
+        question.querySelector(".textAnswerArea");
+
+    const sortArea =
+        question.querySelector(".sortArea");
+
+    choiceArea.style.display="none";
+    textArea.style.display="none";
+    sortArea.style.display="none";
+
+    if(type.value==="choice"){
+
+        choiceArea.style.display="block";
+
+    }else if(type.value==="text"){
+
+        textArea.style.display="block";
+
+    }else if(type.value==="sort"){
+
+        sortArea.style.display="block";
+
+    }
+
+    }
     type.addEventListener("change", refreshType);
 
     const deleteButton =
