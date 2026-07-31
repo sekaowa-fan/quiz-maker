@@ -255,3 +255,21 @@ textarea{
     color:white;
 
 }
+
+.questionButtons{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.copyQuestion{
+
+    width:auto;
+
+    padding:8px 14px;
+
+    font-size:15px;
+
+}
