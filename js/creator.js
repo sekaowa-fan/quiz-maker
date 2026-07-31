@@ -141,7 +141,18 @@ placeholder="記述問題の答え">
 
     questionsArea.appendChild(question);
 
+　　const deleteButton =
+question.querySelector(".deleteQuestion");
 
+deleteButton.addEventListener("click",()=>{
+
+    if(confirm("この問題を削除しますか？")){
+
+        question.remove();
+
+    }
+
+});
 
     const type =
     question.querySelector(".type");
