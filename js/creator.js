@@ -141,6 +141,9 @@ placeholder="記述問題の答え">
 
     questionsArea.appendChild(question);
 
+    const copyButton =
+question.querySelector(".copyQuestion");
+
 　　const deleteButton =
 question.querySelector(".deleteQuestion");
 
