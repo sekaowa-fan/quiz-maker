@@ -49,6 +49,8 @@ function createQuestion(data = null) {
 
             <option value="text">記述問題</option>
 
+            <option value="sort">並べ替え問題</option>
+
         </select>
 
         <label>問題文</label>
@@ -98,6 +100,22 @@ function createQuestion(data = null) {
             <input class="textAnswer">
 
         </div>
+
+        <div class="sortArea">
+
+    <label>項目1</label>
+    <input class="sortItem">
+
+    <label>項目2</label>
+    <input class="sortItem">
+
+    <label>項目3</label>
+    <input class="sortItem">
+
+    <label>項目4</label>
+    <input class="sortItem">
+
+</div>
     `;
 
     questionsArea.appendChild(question);
