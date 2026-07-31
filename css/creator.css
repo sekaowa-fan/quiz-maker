@@ -273,3 +273,37 @@ textarea{
     font-size:15px;
 
 }
+
+.questionImagePreview{
+
+    width:100%;
+
+    min-height:120px;
+
+    border:2px dashed #666;
+
+    border-radius:12px;
+
+    margin:12px 0 20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:#161b24;
+
+}
+
+.questionImagePreview img{
+
+    max-width:100%;
+
+    max-height:260px;
+
+    display:block;
+
+}
