@@ -229,7 +229,22 @@ function createQuestion(data = null) {
 
     });
 
-    if (data) {
+    if (data.type === "sort") {
+
+    const inputs =
+        question.querySelectorAll(".sortItem");
+
+    data.items.forEach((item, index) => {
+
+        if (inputs[index]) {
+
+            inputs[index].value = item;
+
+        }
+
+    });
+
+    }
 
         type.value = data.type;
 
@@ -285,6 +300,21 @@ function getQuestionData(question) {
 
             text,
 
+if (type === "sort") {
+
+    return {
+
+        type,
+
+        text,
+
+        items: [...question.querySelectorAll(".sortItem")]
+            .map(input => input.value)
+
+    };
+
+}
+            
             choices: [...question.querySelectorAll(".choice")]
                 .map(input => input.value),
 
