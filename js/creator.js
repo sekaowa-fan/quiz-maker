@@ -107,7 +107,12 @@ function createQuestion(data = null) {
     const choiceArea = question.querySelector(".choiceArea");
     const textAnswerArea =
         question.querySelector(".textAnswerArea");
+    const imageInput =
+    question.querySelector(".questionImageInput");
 
+    const imagePreview =
+    question.querySelector(".questionImagePreview");
+    
     function refreshType() {
 
         if (type.value === "choice") {
@@ -123,6 +128,30 @@ function createQuestion(data = null) {
         }
 
     }
+
+    imageInput.addEventListener("change",(e)=>{
+
+    const file = e.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = ()=>{
+
+        imagePreview.innerHTML = "";
+
+        const img = document.createElement("img");
+
+        img.src = reader.result;
+
+        imagePreview.appendChild(img);
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
 
     refreshType();
 
