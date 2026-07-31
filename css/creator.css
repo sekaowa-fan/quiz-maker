@@ -307,3 +307,17 @@ textarea{
     display:block;
 
 }
+
+.sortArea{
+
+    display:none;
+
+    margin-top:15px;
+
+}
+
+.sortArea input{
+
+    margin-bottom:10px;
+
+   }
